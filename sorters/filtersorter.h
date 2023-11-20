@@ -1,12 +1,13 @@
 #ifndef FILTERSORTER_H
 #define FILTERSORTER_H
 
+#include "../qqsfpm_global.h"
 #include "sorter.h"
 #include "filters/filtercontainer.h"
 
 namespace qqsfpm {
 
-class FilterSorter : public Sorter, public FilterContainer
+class QQSFPM_EXPORT FilterSorter : public Sorter, public FilterContainer
 {
     Q_OBJECT
     Q_INTERFACES(qqsfpm::FilterContainer)

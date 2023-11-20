@@ -1,12 +1,13 @@
 #ifndef INDEXFILTER_H
 #define INDEXFILTER_H
 
+#include "../qqsfpm_global.h"
 #include "filter.h"
 #include <QVariant>
 
 namespace qqsfpm {
 
-class IndexFilter: public Filter {
+class QQSFPM_EXPORT IndexFilter: public Filter {
     Q_OBJECT
     Q_PROPERTY(QVariant minimumIndex READ minimumIndex WRITE setMinimumIndex NOTIFY minimumIndexChanged)
     Q_PROPERTY(QVariant maximumIndex READ maximumIndex WRITE setMaximumIndex NOTIFY maximumIndexChanged)

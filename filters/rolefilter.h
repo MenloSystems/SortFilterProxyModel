@@ -1,11 +1,12 @@
 #ifndef ROLEFILTER_H
 #define ROLEFILTER_H
 
+#include "../qqsfpm_global.h"
 #include "filter.h"
 
 namespace qqsfpm {
 
-class RoleFilter : public Filter
+class QQSFPM_EXPORT RoleFilter : public Filter
 {
     Q_OBJECT
     Q_PROPERTY(QString roleName READ roleName WRITE setRoleName NOTIFY roleNameChanged)

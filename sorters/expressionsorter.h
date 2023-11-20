@@ -1,6 +1,7 @@
 #ifndef EXPRESSIONSORTER_H
 #define EXPRESSIONSORTER_H
 
+#include "../qqsfpm_global.h"
 #include "sorter.h"
 #include <QQmlScriptString>
 
@@ -10,7 +11,7 @@ namespace qqsfpm {
 
 class QQmlSortFilterProxyModel;
 
-class ExpressionSorter : public Sorter
+class QQSFPM_EXPORT ExpressionSorter : public Sorter
 {
     Q_OBJECT
     Q_PROPERTY(QQmlScriptString expression READ expression WRITE setExpression NOTIFY expressionChanged)

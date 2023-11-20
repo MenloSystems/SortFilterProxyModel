@@ -14,7 +14,7 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON) # This is to find generated *.moc and *.h files in build dir
 
-add_library(SortFilterProxyModel OBJECT
+add_library(SortFilterProxyModel SHARED
     qqmlsortfilterproxymodel.cpp
     qvariantlessthan.cpp
     filters/filter.cpp
@@ -45,20 +45,20 @@ add_library(SortFilterProxyModel OBJECT
     proxyroles/regexprole.cpp
     sorters/filtersorter.cpp
     proxyroles/filterrole.cpp
+    qqsfpm_global.h
 )
 
 target_link_libraries(SortFilterProxyModel
-    PRIVATE
+    PUBLIC
         Qt::Core
         Qt::Qml
+)
+
+target_compile_definitions(SortFilterProxyModel
+    PRIVATE
+        QQSFPM_LIBRARY
 )
 
 if ((MSVC) AND (MSVC_VERSION GREATER_EQUAL 1914))
     target_compile_options(SortFilterProxyModel PUBLIC "/Zc:__cplusplus")
 endif()
-
-target_include_directories(SortFilterProxyModel PUBLIC
-    ${CMAKE_CURRENT_LIST_DIR}
-    $<TARGET_PROPERTY:Qt::Core,INTERFACE_INCLUDE_DIRECTORIES>
-    $<TARGET_PROPERTY:Qt::Qml,INTERFACE_INCLUDE_DIRECTORIES>
-)

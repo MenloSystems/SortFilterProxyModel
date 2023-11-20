@@ -1,0 +1,10 @@
+#ifndef QQSFPM_GLOBAL_H
+#define QQSFPM_GLOBAL_H
+
+#ifdef QQSFPM_LIBRARY
+#define QQSFPM_EXPORT Q_DECL_EXPORT
+#else
+#define QQSFPM_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // QQSFPM_GLOBAL_H

@@ -1,13 +1,14 @@
 #ifndef REGEXPFILTER_H
 #define REGEXPFILTER_H
 
+#include "../qqsfpm_global.h"
 #include "rolefilter.h"
 
 #include <QRegularExpression>
 
 namespace qqsfpm {
 
-class RegExpFilter : public RoleFilter {
+class QQSFPM_EXPORT RegExpFilter : public RoleFilter {
     Q_OBJECT
     Q_PROPERTY(QString pattern READ pattern WRITE setPattern NOTIFY patternChanged)
     Q_PROPERTY(Qt::CaseSensitivity caseSensitivity READ caseSensitivity WRITE setCaseSensitivity NOTIFY caseSensitivityChanged)

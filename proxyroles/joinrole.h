@@ -1,11 +1,12 @@
 #ifndef JOINROLE_H
 #define JOINROLE_H
 
+#include "../qqsfpm_global.h"
 #include "singlerole.h"
 
 namespace qqsfpm {
 
-class JoinRole : public SingleRole
+class QQSFPM_EXPORT JoinRole : public SingleRole
 {
     Q_OBJECT
     Q_PROPERTY(QStringList roleNames READ roleNames WRITE setRoleNames NOTIFY roleNamesChanged)

@@ -1,6 +1,7 @@
 #ifndef PROXYROLE_H
 #define PROXYROLE_H
 
+#include "../qqsfpm_global.h"
 #include <QObject>
 #include <QMutex>
 
@@ -8,7 +9,7 @@ namespace qqsfpm {
 
 class QQmlSortFilterProxyModel;
 
-class ProxyRole : public QObject
+class QQSFPM_EXPORT ProxyRole : public QObject
 {
     Q_OBJECT
 

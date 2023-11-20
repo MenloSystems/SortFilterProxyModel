@@ -1,12 +1,13 @@
 #ifndef REGEXPROLE_H
 #define REGEXPROLE_H
 
+#include "../qqsfpm_global.h"
 #include "proxyrole.h"
 #include <QRegularExpression>
 
 namespace qqsfpm {
 
-class RegExpRole : public ProxyRole
+class QQSFPM_EXPORT RegExpRole : public ProxyRole
 {
     Q_OBJECT
     Q_PROPERTY(QString roleName READ roleName WRITE setRoleName NOTIFY roleNameChanged)

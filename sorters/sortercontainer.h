@@ -1,6 +1,7 @@
 #ifndef SORTERSSORTERCONTAINER_H
 #define SORTERSSORTERCONTAINER_H
 
+#include "../qqsfpm_global.h"
 #include <QList>
 #include <QQmlListProperty>
 #include <qqml.h>
@@ -11,7 +12,7 @@ namespace qqsfpm {
 class Sorter;
 class QQmlSortFilterProxyModel;
 
-class SorterContainer {
+class QQSFPM_EXPORT SorterContainer {
 public:
     virtual ~SorterContainer() = default;
 
@@ -42,7 +43,7 @@ private:
     static void clear_sorters(QQmlListProperty<Sorter>* list);
 };
 
-class SorterContainerAttached : public QObject
+class QQSFPM_EXPORT SorterContainerAttached : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QObject* container READ container WRITE setContainer NOTIFY containerChanged)

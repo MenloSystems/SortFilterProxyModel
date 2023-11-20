@@ -1,13 +1,14 @@
 #ifndef FILTER_H
 #define FILTER_H
 
+#include "../qqsfpm_global.h"
 #include <QObject>
 
 namespace qqsfpm {
 
 class QQmlSortFilterProxyModel;
 
-class Filter : public QObject
+class QQSFPM_EXPORT Filter : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(bool enabled READ enabled WRITE setEnabled NOTIFY enabledChanged)

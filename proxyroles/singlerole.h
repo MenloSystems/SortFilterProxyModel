@@ -1,11 +1,12 @@
 #ifndef SINGLEROLE_H
 #define SINGLEROLE_H
 
+#include "../qqsfpm_global.h"
 #include "proxyrole.h"
 
 namespace qqsfpm {
 
-class SingleRole : public ProxyRole
+class QQSFPM_EXPORT SingleRole : public ProxyRole
 {
     Q_OBJECT
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)

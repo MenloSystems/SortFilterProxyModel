@@ -1,11 +1,12 @@
 #ifndef ANYOFFILTER_H
 #define ANYOFFILTER_H
 
+#include "../qqsfpm_global.h"
 #include "filtercontainerfilter.h"
 
 namespace qqsfpm {
 
-class AnyOfFilter : public FilterContainerFilter {
+class QQSFPM_EXPORT AnyOfFilter : public FilterContainerFilter {
     Q_OBJECT
 
 public:

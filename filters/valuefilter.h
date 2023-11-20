@@ -1,12 +1,13 @@
 #ifndef VALUEFILTER_H
 #define VALUEFILTER_H
 
+#include "../qqsfpm_global.h"
 #include "rolefilter.h"
 #include <QVariant>
 
 namespace qqsfpm {
 
-class ValueFilter : public RoleFilter {
+class QQSFPM_EXPORT ValueFilter : public RoleFilter {
     Q_OBJECT
     Q_PROPERTY(QVariant value READ value WRITE setValue NOTIFY valueChanged)
 

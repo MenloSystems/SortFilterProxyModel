@@ -1,12 +1,13 @@
 #ifndef RANGEFILTER_H
 #define RANGEFILTER_H
 
+#include "../qqsfpm_global.h"
 #include "rolefilter.h"
 #include <QVariant>
 
 namespace qqsfpm {
 
-class RangeFilter : public RoleFilter
+class QQSFPM_EXPORT RangeFilter : public RoleFilter
 {
     Q_OBJECT
     Q_PROPERTY(QVariant minimumValue READ minimumValue WRITE setMinimumValue NOTIFY minimumValueChanged)

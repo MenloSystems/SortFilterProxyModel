@@ -1,12 +1,13 @@
 #ifndef STRINGSORTER_H
 #define STRINGSORTER_H
 
+#include "../qqsfpm_global.h"
 #include "rolesorter.h"
 #include <QCollator>
 
 namespace qqsfpm {
 
-class StringSorter : public RoleSorter
+class QQSFPM_EXPORT StringSorter : public RoleSorter
 {
     Q_OBJECT
     Q_PROPERTY(Qt::CaseSensitivity caseSensitivity READ caseSensitivity WRITE setCaseSensitivity NOTIFY caseSensitivityChanged)

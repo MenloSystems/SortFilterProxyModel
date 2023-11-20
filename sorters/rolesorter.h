@@ -1,11 +1,12 @@
 #ifndef ROLESORTER_H
 #define ROLESORTER_H
 
+#include "../qqsfpm_global.h"
 #include "sorter.h"
 
 namespace qqsfpm {
 
-class RoleSorter : public Sorter
+class QQSFPM_EXPORT RoleSorter : public Sorter
 {
     Q_OBJECT
     Q_PROPERTY(QString roleName READ roleName WRITE setRoleName NOTIFY roleNameChanged)

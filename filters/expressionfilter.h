@@ -1,6 +1,7 @@
 #ifndef EXPRESSIONFILTER_H
 #define EXPRESSIONFILTER_H
 
+#include "../qqsfpm_global.h"
 #include "filter.h"
 #include <QQmlScriptString>
 
@@ -8,7 +9,7 @@ class QQmlExpression;
 
 namespace qqsfpm {
 
-class ExpressionFilter : public Filter
+class QQSFPM_EXPORT ExpressionFilter : public Filter
 {
     Q_OBJECT
     Q_PROPERTY(QQmlScriptString expression READ expression WRITE setExpression NOTIFY expressionChanged)

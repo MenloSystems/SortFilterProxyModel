@@ -1,6 +1,7 @@
 #ifndef PROXYROLECONTAINER_H
 #define PROXYROLECONTAINER_H
 
+#include "../qqsfpm_global.h"
 #include <QList>
 #include <QQmlListProperty>
 
@@ -9,7 +10,7 @@ namespace qqsfpm {
 class ProxyRole;
 class QQmlSortFilterProxyModel;
 
-class ProxyRoleContainer {
+class QQSFPM_EXPORT ProxyRoleContainer {
 public:
     virtual ~ProxyRoleContainer() = default;
 

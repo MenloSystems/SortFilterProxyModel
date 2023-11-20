@@ -1,6 +1,7 @@
 #ifndef EXPRESSIONROLE_H
 #define EXPRESSIONROLE_H
 
+#include "../qqsfpm_global.h"
 #include "singlerole.h"
 #include <QMap>
 #include <QPersistentModelIndex>
@@ -10,7 +11,7 @@ class QQmlExpression;
 
 namespace qqsfpm {
 
-class ExpressionRole : public SingleRole
+class QQSFPM_EXPORT ExpressionRole : public SingleRole
 {
     Q_OBJECT
     Q_PROPERTY(QQmlScriptString expression READ expression WRITE setExpression NOTIFY expressionChanged)
