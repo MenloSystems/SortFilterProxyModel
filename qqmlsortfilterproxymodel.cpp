@@ -5,6 +5,8 @@
 #include "sorters/sorter.h"
 #include "proxyroles/proxyrole.h"
 
+using namespace Qt_6_5;
+
 namespace qqsfpm {
 
 /*!

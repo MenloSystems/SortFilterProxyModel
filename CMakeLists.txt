@@ -2,14 +2,11 @@ cmake_minimum_required(VERSION 3.14)
 
 set(CMAKE_CXX_STANDARD 17)
 
-if (NOT QT_VERSION_MAJOR)
-    set(QT_VERSION_MAJOR 5)
-endif()
-
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS
+find_package(Qt6 REQUIRED COMPONENTS
     Core
     Qml
 )
+find_package(Qt6Core REQUIRED COMPONENTS Private)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON) # This is to find generated *.moc and *.h files in build dir
@@ -45,10 +42,13 @@ add_library(SortFilterProxyModel SHARED
     proxyroles/regexprole.cpp
     sorters/filtersorter.cpp
     proxyroles/filterrole.cpp
+    upstream/qsortfilterproxymodel.cpp
     qqsfpm_global.h
 )
 
 target_link_libraries(SortFilterProxyModel
+    PRIVATE
+        Qt::CorePrivate
     PUBLIC
         Qt::Core
         Qt::Qml

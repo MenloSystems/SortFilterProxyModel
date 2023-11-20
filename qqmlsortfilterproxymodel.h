@@ -2,15 +2,15 @@
 #define QQMLSORTFILTERPROXYMODEL_H
 
 #include "qqsfpm_global.h"
-#include <QSortFilterProxyModel>
 #include <QQmlParserStatus>
 #include "filters/filtercontainer.h"
 #include "sorters/sortercontainer.h"
 #include "proxyroles/proxyrolecontainer.h"
+#include "upstream/qsortfilterproxymodel.h"
 
 namespace qqsfpm {
 
-class QQSFPM_EXPORT QQmlSortFilterProxyModel : public QSortFilterProxyModel,
+class QQSFPM_EXPORT QQmlSortFilterProxyModel : public Qt_6_5::QSortFilterProxyModel,
                                  public QQmlParserStatus,
                                  public FilterContainer,
                                  public SorterContainer,
