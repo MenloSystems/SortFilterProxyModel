@@ -11,7 +11,15 @@ find_package(Qt6Core REQUIRED COMPONENTS Private)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON) # This is to find generated *.moc and *.h files in build dir
 
-add_library(SortFilterProxyModel SHARED
+option(BUILD_STATIC "Compile static libraries" ${EMSCRIPTEN})
+
+if (BUILD_STATIC)
+    add_library(SortFilterProxyModel STATIC "")
+else()
+    add_library(SortFilterProxyModel SHARED "")
+endif()
+
+target_sources(SortFilterProxyModel PRIVATE
     qqmlsortfilterproxymodel.cpp
     qvariantlessthan.cpp
     filters/filter.cpp
