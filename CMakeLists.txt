@@ -67,6 +67,16 @@ target_compile_definitions(SortFilterProxyModel
         QQSFPM_LIBRARY
 )
 
+set_property(TARGET SortFilterProxyModel
+    PROPERTY SOVERSION 0.1.1
+)
+
 if ((MSVC) AND (MSVC_VERSION GREATER_EQUAL 1914))
     target_compile_options(SortFilterProxyModel PUBLIC "/Zc:__cplusplus")
 endif()
+
+install(TARGETS SortFilterProxyModel
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+)
