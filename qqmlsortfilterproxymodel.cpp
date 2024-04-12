@@ -232,21 +232,17 @@ QVariant QQmlSortFilterProxyModel::sourceData(const QModelIndex &sourceIndex) co
 #else
         QVariant ret(m_sourceGetMethod.returnMetaType(), nullptr);
 #endif
-#if QT_VERSION < QT_VERSION_CHECK(6, 5, 0)
         QGenericReturnArgument retArg(m_sourceGetMethod.typeName(), ret.data());
-#else
-        QMetaMethodReturnArgument retArg{m_sourceGetMethod.returnMetaType().iface(),
-                                         m_sourceGetMethod.typeName(), ret.data()};
-#endif
 
         bool success = false;
 
         if (m_sourceGetMethod.parameterType(0) == QMetaType::Int) {
-            success = m_sourceGetMethod.invoke(sourceModel(), retArg,
-                                               Q_ARG(int, sourceIndex.row()));
+            const int row = sourceIndex.row();
+            QGenericArgument arg(QMetaType::fromType<int>().name(), &row);
+            success = m_sourceGetMethod.invoke(sourceModel(), retArg, arg);
         } else {
-            success = m_sourceGetMethod.invoke(sourceModel(), retArg,
-                                               Q_ARG(QModelIndex, sourceIndex));
+            QGenericArgument arg("QModelIndex", &sourceIndex);
+            success = m_sourceGetMethod.invoke(sourceModel(), retArg, arg);
         }
 
         if (success) {
