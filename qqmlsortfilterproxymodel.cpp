@@ -537,17 +537,17 @@ void QQmlSortFilterProxyModel::initRoles()
     updateRoles();
 }
 
-void QQmlSortFilterProxyModel::onDataChanged(const QModelIndex& topLeft, const QModelIndex& bottomRight, const QVector<int>& roles)
+void QQmlSortFilterProxyModel::onDataChanged(const QModelIndex& topLeft, const QModelIndex& bottomRight, const QList<int>& roles)
 {
     Q_UNUSED(roles);
     if (!roles.isEmpty() && !m_proxyRoleNumbers.empty() && roles != m_proxyRoleNumbers)
         Q_EMIT dataChanged(topLeft, bottomRight, m_proxyRoleNumbers);
 }
 
-void QQmlSortFilterProxyModel::_q_sourceDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles)
+void QQmlSortFilterProxyModel::_q_sourceDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QList<int> &roles)
 {
     static QMetaMethod super_q_sourceDataChanged = [] {
-        int id = QSortFilterProxyModel::staticMetaObject.indexOfSlot("_q_sourceDataChanged(QModelIndex,QModelIndex,QVector<int>)");
+        int id = QSortFilterProxyModel::staticMetaObject.indexOfSlot("_q_sourceDataChanged(QModelIndex,QModelIndex,QList<int>)");
         return QSortFilterProxyModel::staticMetaObject.method(id);
     }();
     Q_ASSERT(super_q_sourceDataChanged.isValid());
@@ -557,7 +557,7 @@ void QQmlSortFilterProxyModel::_q_sourceDataChanged(const QModelIndex &topLeft, 
 
     if (!skipFilters) {
         // See if this is only about ignored roles and if so, skip filters.
-        QVector<int> filteredRoles = roles;
+        QList<int> filteredRoles = roles;
 
         for (const auto &role : std::as_const(m_ignoredRoles)) {
             bool ok;
@@ -579,7 +579,7 @@ void QQmlSortFilterProxyModel::_q_sourceDataChanged(const QModelIndex &topLeft, 
         return;
     }
 
-    bool ok = super_q_sourceDataChanged.invoke(this, Q_ARG(QModelIndex, topLeft), Q_ARG(QModelIndex, bottomRight), Q_ARG(QVector<int>, roles));
+    bool ok = super_q_sourceDataChanged.invoke(this, Q_ARG(QModelIndex, topLeft), Q_ARG(QModelIndex, bottomRight), Q_ARG(QList<int>, roles));
     Q_ASSERT(ok);
     Q_UNUSED(ok);
 }

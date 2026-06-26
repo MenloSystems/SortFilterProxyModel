@@ -114,8 +114,8 @@ private Q_SLOTS:
     void updateSortRole();
     void updateRoles();
     void initRoles();
-    void onDataChanged(const QModelIndex& topLeft, const QModelIndex& bottomRight, const QVector<int>& roles);
-    void _q_sourceDataChanged(const QModelIndex& topLeft, const QModelIndex& bottomRight, const QVector<int>& roles);
+    void onDataChanged(const QModelIndex& topLeft, const QModelIndex& bottomRight, const QList<int>& roles);
+    void _q_sourceDataChanged(const QModelIndex& topLeft, const QModelIndex& bottomRight, const QList<int>& roles);
     void queueInvalidateProxyRoles();
     void invalidateProxyRoles();
 
@@ -144,7 +144,7 @@ private:
     bool m_completed = false;
     QHash<int, QByteArray> m_roleNames;
     QHash<int, QPair<ProxyRole*, QString>> m_proxyRoleMap;
-    QVector<int> m_proxyRoleNumbers;
+    QList<int> m_proxyRoleNumbers;
 
     bool m_invalidateFilterQueued = false;
     bool m_invalidateQueued = false;
