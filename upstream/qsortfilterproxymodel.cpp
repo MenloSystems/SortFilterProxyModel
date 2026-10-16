@@ -4,6 +4,7 @@
 #include "qsortfilterproxymodel.h"
 #include "qitemselectionmodel.h"
 #include <qsize.h>
+#include <qcollator.h>
 #include <qdebug.h>
 #include <qdatetime.h>
 #include <qpair.h>
@@ -180,6 +181,9 @@ public:
         q_func()->setFilterRegularExpression(re);
     }
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 12, 0)
+    QCollator sort_collator;
+#endif
     int source_sort_column = -1;
     int proxy_sort_column = -1;
     Qt::SortOrder sort_order = Qt::AscendingOrder;
@@ -605,6 +609,13 @@ bool QSortFilterProxyModelPrivate::can_create_mapping(const QModelIndex &source_
 void QSortFilterProxyModelPrivate::sort()
 {
     Q_Q(QSortFilterProxyModel);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 12, 0)
+    if (sort_localeaware)
+        sort_collator = QCollator(QLocale::system());
+    else
+        sort_collator = QCollator(QLocale::C);
+    sort_collator.setCaseSensitivity(sort_casesensitivity);
+#endif
     emit q->layoutAboutToBeChanged(QList<QPersistentModelIndex>(), QAbstractItemModel::VerticalSortHint);
     QModelIndexPairList source_indexes = store_persistent_indexes();
     const auto end = source_index_mapping.constEnd();
@@ -3225,7 +3236,11 @@ bool QSortFilterProxyModel::lessThan(const QModelIndex &source_left, const QMode
     Q_D(const QSortFilterProxyModel);
     QVariant l = (source_left.model() ? source_left.model()->data(source_left, d->sort_role) : QVariant());
     QVariant r = (source_right.model() ? source_right.model()->data(source_right, d->sort_role) : QVariant());
+#if QT_VERSION >= QT_VERSION_CHECK(6, 12, 0)
+    return QAbstractItemModel::compareData(l, r, d->sort_collator) < 0;
+#else
     return QAbstractItemModelPrivate::isVariantLessThan(l, r, d->sort_casesensitivity, d->sort_localeaware);
+#endif
 }
 
 /*!
